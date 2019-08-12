@@ -117,3 +117,8 @@ Then changes will be made to the edge routers (or maybe even to the switches,
 but I am not that good at LAN queuing, maybe I'll take a look at the Ignition
 lesson there). This will then show the traffic will be moved into a queue and
 show the output of the service policies.
+
+### Additional Module - Gathering Data On Meraki Networks
+
+- Using Ansible to gather data from Meraki network environments, leveraging
+the Meraki specific modules and alternatives with the URI module.
