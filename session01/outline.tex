@@ -1,6 +1,10 @@
 \documentclass{beamer}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
+\usepackage{media9}
+\usetheme{Madrid}
+\usecolortheme{beaver}
+\usefonttheme{structuresmallcapsserif}
 \graphicspath{ {./assets/ } }
 
 \title{Ansible for \#NetworkAutomation}
@@ -30,8 +34,21 @@ At the end of this session you will be able to:
 \begin{frame}
 \frametitle{Network Diagram}
 \includegraphics[width=\textwidth]{assets/base_setup.png}
-    
 \end{frame}
+
+% \begin{frame}
+% \frametitle{Video Test}
+% \includemedia[
+%      width=6cm,height=6cm,
+%      activate=pageopen,
+%      addresource=assets/clip.mp4,
+%      flashvars={
+%          source=assets/clip.mp4
+%         &autoPlay=true
+%      }
+% ]{}{VPlayer.swf}
+
+% \end{frame}
 
 \begin{frame}[fragile]
     \frametitle{Playbook Management Key Values}
