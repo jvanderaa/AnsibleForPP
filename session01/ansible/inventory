@@ -1,0 +1,17 @@
+[routers]
+border-rtr01 ansible_host=10.0.0.100
+rtr-1 ansible_host=10.0.0.10
+rtr-2 ansible_host=10.0.0.2
+
+[routers:children]
+wan_routers
+
+[routers:vars]
+ansible_network_os=ios
+ansible_user=cisco
+ansible_password=cisco
+ansible_become_pass=cisco
+
+[wan_routers]
+rtr-4 ansible_host=10.0.0.4
+rtr-3 ansible_host=10.0.0.3
