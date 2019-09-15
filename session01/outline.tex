@@ -6,16 +6,16 @@
 \usefonttheme{professionalfonts}
 \urlstyle{same}
 
-\title{Ansible for NetworkAutomation}
-\date{2019-09}
+\title{Getting Started with Ansible for Network Automation}
+\date{}
+\author{Josh VanDeraa}
 
 \begin{document}
-
-\frame{\titlepage}
-
+% \frame{\titlepage}
 \begin{frame}
-    \frametitle{Session Overview}
-    \tableofcontents
+  \maketitle
+  \footnotesize
+  \faTwitter vanderaaj \hfill \faGithub jvanderaa \hfill \faSlack jvanderaa
 \end{frame}
 
 \begin{frame}
@@ -30,14 +30,14 @@ At the end of this session you will be able to:
     \item <5-> hosts:
   \end{itemize}
   \item <6-> Update an Ansible config file to manipulate playbook wide settings
-  \item <7-> Gather data from various devices
+  \item <7-> Gather data from various devices using command modules
     \begin{itemize}
         \item IOS
         \item NXOS
-        \item Juniper
         \item Other network devices
     \end{itemize}
-  \item <8-> Use regex to parse data from a command with data gathered
+  \item <8-> Know where to find information about Ansible Network Modules
+  \item <9-> Use regex to parse data from a command with data gathered
 \end{itemize}
 \end{frame}
 
@@ -61,7 +61,7 @@ At the end of this session you will be able to:
 \end{frame}
 
 \begin{frame}
-  \frametitle{Quick Note on Ansible Modules}
+  \frametitle{Ansible Network Modules}
   \begin{block}{Ansible Network Modules}
     The whole list of Network modules and their corresponding requirements
     can be found with your favorite search engine on term of "Ansible Network Modules" 
@@ -71,20 +71,74 @@ At the end of this session you will be able to:
 \end{frame}
 
 \begin{frame}
+  \frametitle{Ansible Network Modules Page}
+    Let's take a look at those modules
+\end{frame}
+
+\begin{frame}
     \frametitle{Gathering Data from Cisco IOS Devices}
-    There are two primary methods to gather data from IOS devices, using:
+    Today's demo: We are going to take a look at a couple of the modules used
+    for gathering information from Cisco IOS devices. 
     \begin{itemize}
         \item<2-> \textbf{cli\_command}
         \item<3-> \textbf{ios\_command}
-        \item<4-> More modules for interacting with IOS devices can be found on the Ansible Network Modules Page
     \end{itemize}
 \end{frame}
 
 \begin{frame}
     \frametitle{ios\_command}
-    This is used when working with Cisco IOS devices connecting with SSH.
-    
+    \begin{itemize}
+      \item <1-> This is used when working with Cisco IOS devices connecting with SSH
+      \item <2-> One of the original network modules introduced with Ansible for networking devices
+      \item <3-> Has evolved over time, original playbooks you will see a key \textbf{provider:} included, this is legacy
+    \end{itemize}
 \end{frame}
 
+\begin{frame}
+  \frametitle{DEMO!}
+  \begin{columns}
+  \begin{column}{0.3\textwidth}
+    \Huge
+    \begin{center}
+      \faDesktop 
+      \hspace{.5cm}
+      \faRocket     
+    \end{center}
+  \end{column}
+  \begin{column}{0.7\textwidth}
+    \huge 
+    Let's take a look!
+    \begin{itemize}
+      \item cli\_command
+      \item ios\_command
+    \end{itemize}
+  \end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Summary}
+    To review what we accomplished today:
+    \begin{itemize}
+      \item <1-> We reviewed the playbook management keys and values
+      \item <2-> Covered how to change settings within the Ansible configs, that are helpful for Network Engineers
+      \item <3-> Gathered data from IOS and NXOS devices, using multiple methods
+      \item <4-> Detailed where to get more information about network modules on the Ansible documentation pages
+      \item <5-> Used regex to find the number of interfaces on a device
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Contact}
+  \huge
+  You can find me and more contacts on the Packet Pushers Slack Channel. 
+  \linebreak
+  \begin{center}
+    \normalsize
+    \faSlack \hspace{.1cm}jvanderaa  
+  \end{center}
+  
+\end{frame}
 
 \end{document}
