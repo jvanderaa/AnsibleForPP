@@ -3,15 +3,15 @@
   connection: network_cli
   hosts: rtr-3
   tasks:
-    - name: "TASK 1: IOS >> Gather Version of the Device"
+    - name: "TASK 1: IOS >> Get NTP info"
       ios_command:
         commands:
-         - show clock
+         - show ntp associations
       register: ios_command_output
 
-    - name: "TASK 2: CLI >> Get routing table"
+    - name: "TASK 2: CLI >> Get NTP info"
       cli_command:
-        command: "show clock"
+        command: "show ntp associations"
       register: cli_command_output
 
     - name: "TASK 3: DEBUG >> IOS Command output"
