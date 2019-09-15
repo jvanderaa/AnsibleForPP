@@ -1,0 +1,24 @@
+---
+- name: "PLAY 1: Gather Data from Routers"
+  connection: network_cli
+  hosts: rtr-3
+  tasks:
+    - name: "TASK 1: IOS >> Gather Version of the Device"
+      ios_command:
+        commands:
+         - show clock
+      register: ios_command_output
+
+    - name: "TASK 2: CLI >> Get routing table"
+      cli_command:
+        command: "show clock"
+      register: cli_command_output
+
+    - name: "TASK 3: DEBUG >> IOS Command output"
+      debug:
+        msg: "{{ ios_command_output }}"
+
+    - name: "TASK 4: DEBUG >> CLI Command output"
+      debug:
+        msg: "{{ cli_command_output }}"
+...
