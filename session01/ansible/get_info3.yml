@@ -6,21 +6,21 @@
     - name: "TASK 1: IOS >> Gather Version of the Device"
       ios_command:
         commands:
-         - show version
+         - show ntp association
       register: show_version
 
     - name: "TASK 2: DEBUG >> Command output"
       debug:
         msg: "{{ show_version }}"
 
-    - name: "TASK 3: IOS >> Gather CDP neighbor information"
+    - name: "TASK 3: IOS >> Gather CDP neighbor and ip routing information"
       ios_command:
         commands:
           - show cdp neighbor
-          - show ip route
+          - show ip route 192.168.1.0
       register: command_output
 
-    - name: "TASK 4: DEBUG >> Show CDP Neighbor Information"
+    - name: "TASK 4: DEBUG >> Show Command Output"
       debug:
         msg: "{{ command_output }}"
 
@@ -31,7 +31,7 @@
   tasks:
     - name: "TASK 1: CLI >> Get routing table"
       cli_command:
-        command: "show ip route"
+        command: "show ntp association"
       register: cli_output
 
     - name: "TASK 2: Debug output"

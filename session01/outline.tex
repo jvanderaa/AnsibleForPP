@@ -6,7 +6,8 @@
 \usefonttheme{professionalfonts}
 \urlstyle{same}
 
-\title{Getting Started with Ansible for Network Automation}
+\title{Ansible for Network Automation}
+\subtitle{Gathering Information from Devices}
 \date{}
 \author{Josh VanDeraa}
 
@@ -22,41 +23,28 @@
   \frametitle{Session Overview}
   At the end of this session you will be able to:
   \begin{itemize}
-    \item <2-> Review the playbook management keys and values
+    \item <2-> Know where to find information about Ansible Network Modules
+    \item <3-> Review the common network playbook management keys and values
       \begin{itemize}
         \item <3-> vars:
         \item <4-> connection:
         \item <5-> hosts:
       \end{itemize}
-    \item <6-> Update an Ansible config file to manipulate playbook wide settings
+    \item <6-> Update an Ansible config file to manipulate folder wide playbook settings and behavior
     \item <7-> Gather data from various devices using command modules
       \begin{itemize}
         \item IOS
         \item NXOS
+        \item cli\_command
         \item Other network devices
       \end{itemize}
-    \item <8-> Know where to find information about Ansible Network Modules
-    \item <9-> How to use ios_facts to gather IOS specific facts from a device
+    \item <8-> How to use ios\_facts to gather IOS specific facts from a device
   \end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Network Diagram}
 \includegraphics[width=\textwidth]{assets/base_setup.png}
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Playbook Management Key Values}
-    All Ansible playbooks are defined within YAML format, which leverages key/value
-    pair assignments. We will take a look at some common keys used, and what their
-    corresponding value looks like.
-\begin{verbatim}
-- name: "PLAY 1: Gather data from router"
-  connection: network_cli
-  hosts: r1
-  become: true
-  become_method: enable
-\end{verbatim}
 \end{frame}
 
 \begin{frame}
@@ -73,6 +61,22 @@
   \frametitle{Ansible Network Modules Page}
     Let's take a look at those modules
 \end{frame}
+
+% \begin{frame}[fragile]
+%     \frametitle{Playbook Management Key Values}
+%     All Ansible playbooks are defined within YAML format, which leverages key/value
+%     pair assignments. We will take a look at some common keys used, and what their
+%     corresponding value looks like.
+% \begin{verbatim}
+% - name: "PLAY 1: Gather data from router"
+%   connection: network_cli
+%   hosts: r1
+%   become: true
+%   become_method: enable
+% \end{verbatim}
+% \end{frame}
+
+
 
 \begin{frame}
     \frametitle{Gathering Data from Cisco IOS Devices}

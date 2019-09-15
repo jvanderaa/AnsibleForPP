@@ -46,7 +46,7 @@
     - name: "TASK 1: NXOS >> Get routing table"
       nxos_command:
         commands:
-          - show ip route
+          - show ip route 192.168.1.0
       register: nxos_output
 
     - name: "TASK 2: DEBUG >> Nxos output"
