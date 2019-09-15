@@ -3,7 +3,7 @@
   connection: network_cli
   hosts: wan_routers
   tasks:
-    - name: "TASK 1: IOS >> Gather Version of the Device"
+    - name: "TASK 1: IOS >> Gather NTP Association"
       ios_command:
         commands:
          - show ntp association

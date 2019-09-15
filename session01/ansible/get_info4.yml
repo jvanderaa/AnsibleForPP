@@ -3,7 +3,7 @@
   connection: network_cli
   hosts: wan_routers
   tasks:
-    - name: "TASK 1: IOS >> Gather Version of the Device"
+    - name: "TASK 1: IOS >> Gather NTP Association"
       ios_command:
         commands:
          - show version
@@ -29,24 +29,25 @@
   hosts: wan_routers
   
   tasks:
-    - name: "TASK 1: CLI >> Get routing table"
+    - name: "TASK 1: CLI >> Get NTP Associations via CLI"
       cli_command:
-        command: "show ip route"
+        command: "show ntp association"
       register: cli_output
 
     - name: "TASK 2: Debug output"
       debug:
         msg: "{{ cli_output }}"
 
+
 - name: "PLAY 3: NXOS gather info"
   connection: network_cli
   hosts: nxos_switches
 
   tasks:
-    - name: "TASK 1: NXOS >> Get routing table"
+    - name: "TASK 1: NXOS >> Get NTP Status"
       nxos_command:
         commands:
-          - show ip route 192.168.1.0
+          - show ntp peer-status
       register: nxos_output
 
     - name: "TASK 2: DEBUG >> Nxos output"
