@@ -1,0 +1,27 @@
+---
+- name: "PLAY 1: Gather Data from Routers"
+  connection: network_cli
+  hosts: wan_routers
+  tasks:
+    - name: "TASK 1: IOS >> Gather Version of the Device"
+      ios_command:
+        commands:
+         - show version
+      register: show_version
+
+    - name: "TASK 2: DEBUG >> Command output"
+      debug:
+        msg: "{{ show_version }}"
+
+    - name: "TASK 3: IOS >> Gather CDP neighbor information"
+      ios_command:
+        commands:
+          - show cdp neighbor
+          - show ip route
+      register: command_output
+
+    - name: "TASK 4: DEBUG >> Show CDP Neighbor Information"
+      debug:
+        msg: "{{ command_output }}"
+
+      
