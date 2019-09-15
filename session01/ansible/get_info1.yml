@@ -1,0 +1,17 @@
+---
+- name: "PLAY 1: Gather Data from Routers"
+  connection: network_cli
+  hosts: wan_routers
+  tasks:
+    - name: "TASK 1: IOS >> Gather Version of the Device"
+      ios_command:
+        commands:
+         - show ntp association
+      register: show_ntp
+
+    - name: "TASK 2: DEBUG >> Command output"
+      debug:
+        msg: "{{ show_ntp }}"
+
+
+      
