@@ -1,0 +1,44 @@
+---
+- name: "PLAY 1: First play, run through first"
+  connection: local
+  gather_facts: no
+  become: no
+  hosts: localhost
+  tags: google, cloudflare
+  vars:
+    my_first_var: "Ignition!"
+  
+  tasks:
+    - name: "TASK 1: SYS >> Ping out to defined address: 127.0.0.1"
+      shell: "ping 127.0.0.1 -c 3"
+      register: ping_output
+
+    - name: "TASK 2: SYS >> Print output of ping"
+      debug:
+        var: "ping_output"
+
+- name: "PLAY 2: Ping CloudFlare address when Tag is cloudflare"
+  connection: local
+  gather_facts: no
+  become: no
+  hosts: localhost
+  tags: cloudflare
+
+  tasks:
+    - name: "TASK 1: SYS >> Ping to cloudflare DNS 1.1.1.1"
+      shell: "ping 1.1.1.1 -c 3"
+      register: cloudflare_ping
+
+    - name: "TASK 2: SYS >> Print out result"
+      debug:
+        msg: "{{ cloudflare_ping }}"
+
+- name: Debug user
+  connection: local
+  gather_facts: no
+  become: no
+  hosts: localhost
+  tasks:
+    - debug:
+        msg: "{{ ansible_user }}"
+

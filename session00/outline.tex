@@ -1,0 +1,111 @@
+\documentclass{beamer}
+\usepackage{fontawesome}
+\usepackage{hyperref}
+\usetheme{Madrid}
+\usecolortheme{sidebartab}
+\usefonttheme{professionalfonts}
+\urlstyle{same}
+
+\title{Ansible for Network Automation}
+\subtitle{Getting to Know Ansible}
+\date{}
+\author{Josh VanDeraa}
+
+\begin{document}
+% \frame{\titlepage}
+\begin{frame}
+  \maketitle
+  \footnotesize
+  \faTwitter vanderaaj \hfill \faGithub jvanderaa \hfill \faSlack jvanderaa
+\end{frame}
+
+\begin{frame}
+  \frametitle{Session Overview}
+  At the end of this session you will be able to:
+  \begin{itemize}
+    \item <2-> Origins of Ansible
+    \item <3-> Understand the Ansible Playbook structure
+    \begin{itemize}
+      \item <3-> Tasks
+      \item <4-> Plays
+      \item <5-> Playbooks
+      \item <6-> Roles
+    \end{itemize}
+    \item <7-> Use of the debug module
+    \item <8-> Understand the purpose of "Magic Variables"
+    \begin{itemize}
+      \item <8-> ansible\_user
+      \item <9-> ansible\_password
+      \item <10-> ansible\_become\_pass
+    \end{itemize}
+    \item <11-> Know where to find help and file issues found
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ansible Origins}
+  \begin{itemize}
+    \item Originally was used to manage Linux hosts
+    \item <2-> Agent-less architecture
+    \item <3-> Leverage sports analogies for describing the structure
+    \begin{itemize}
+      \item <3-> Start with individual tasks at the smallest level
+      \item <4-> Tasks are part of a play
+      \item <5-> Multiple plays form a playbook
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Demo!}
+  \begin{columns}
+    \begin{column}{0.3\textwidth}
+      \Huge
+      \begin{center}
+        \faDesktop 
+        \hspace{.5cm}
+        \faRocket     
+      \end{center}
+    \end{column}
+    \begin{column}{0.7\textwidth}
+      \huge 
+      Let's take a look at a few Playbooks
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Summary}
+    To review what we accomplished today:
+    \begin{itemize}
+      \item <1-> Playbook structure
+      \begin{itemize}
+        \item <2-> Tasks
+        \item <2-> Plays
+        \item <2-> Playbooks
+        \item <2-> Roles
+      \end{itemize}
+      \item <3-> Use the debug module to look into the automation
+      \item <4-> Ansible "magic variables"
+      \begin{itemize}
+        \item <5-> ansible\_user
+        \item <5-> ansible\_password
+        \item <5-> asnible\_become\_pass
+      \end{itemize}
+      \item <6-> Reviewed Ansible's Galaxy/Github pages
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Contact}
+  \huge
+  You can find me and more contacts on the Packet Pushers Slack Channel. 
+  \linebreak
+  \begin{center}
+    \normalsize
+    \faSlack \hspace{.1cm}jvanderaa  
+  \end{center}
+  
+\end{frame}
+
+\end{document}

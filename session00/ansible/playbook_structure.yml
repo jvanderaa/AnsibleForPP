@@ -1,0 +1,37 @@
+---
+- name: "PLAY 1: First play, run through first"
+  connection: local
+  gather_facts: no
+  become: no
+  hosts: localhost
+  tags: google, cloudflare
+  vars:
+    my_first_var: "Ignition!"
+    handler_output: "not run"
+  vars_prompt:
+    - name: address_to_ping
+      prompt: "What address should I ping?"
+      private: no
+
+  handlers:
+    - name: ping cloudflare
+      shell: "ping 1.1.1.1 -c 2"
+      register: handler_output
+
+  tasks:
+    - name: "TASK 1: Ping out to defined address: {{ address_to_ping }}"
+      shell: "ping {{ address_to_ping }} -c 3"
+      register: ping_output
+      changed_when: "'127' in ping_output.stdout"
+      notify: 
+        - ping cloudflare
+
+    - name: "TASK 2: Print output of ping"
+      debug:
+        var: "ping_output"
+    
+    # - meta: flush_handlers
+
+    - name: "TASK 3: Print handler variable"
+      debug:
+        var: "handler_output"
