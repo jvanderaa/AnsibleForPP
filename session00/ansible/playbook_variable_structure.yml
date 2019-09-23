@@ -1,0 +1,41 @@
+---
+- name: "PLAY 1: First play, run through first"
+  connection: local
+  gather_facts: no
+  become: no
+  hosts: localhost
+  tags: google, cloudflare
+  vars:
+    my_first_var: "Ignition!"
+
+  vars_prompt:
+    - name: my_prompt1
+      prompt: "Say ready?"
+      private: no
+    - name: my_secret1
+      prompt: "Set?"
+      private: yes
+
+  tasks:
+    - name: "TASK 1: Show variables that are defined"
+      debug:
+        msg:
+          - "{{ my_first_var }}"
+          - "{{ my_prompt1 }}"
+          - "{{ my_secret1 }}"
+
+    - name: "TASK 2: Set secret private prompt to 'go'"
+      set_fact:
+        my_secret1: "go"
+
+    - name: "Quick Pause"
+      pause:
+        minutes: 2
+
+    - name: "TASK 3: Show variables that are defined"
+      debug:
+        msg:
+          - "{{ my_first_var }}"
+          - "{{ my_prompt1 }}"
+          - "{{ my_secret1 }}"
+  
