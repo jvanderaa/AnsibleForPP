@@ -15,4 +15,4 @@
 
     - name: "TASK 3: SYS >> Debug ansible_become_password"
       debug:
-        msg: "{{ ansible_become_password }}"
+        msg: "{{ ansible_become_pass }}"
