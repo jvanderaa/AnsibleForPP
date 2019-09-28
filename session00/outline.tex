@@ -21,22 +21,22 @@
 
 \begin{frame}
   \frametitle{Session Overview}
-  At the end of this session you will be able to:
+  At the end of this session you will:
   \begin{itemize}
-    \item <2-> Origins of Ansible
-    \item <3-> Understand the Ansible Playbook structure
+    \item <2-> Know more about the Origins of Ansible
+    \item <3-> Know about inventory files and how to put it together
+    \item <4-> Understand the Ansible Playbook structure
     \begin{itemize}
-      \item <3-> Tasks
-      \item <4-> Plays
-      \item <5-> Playbooks
-      \item <6-> Roles
+      \item <4-> Tasks
+      \item <5-> Plays
+      \item <6-> Playbooks
+      \item <7-> Roles
     \end{itemize}
-    \item <7-> Use of the debug module
-    \item <8-> Understand the purpose of "Magic Variables"
+    \item <8-> Use of the debug module
+    \item <9-> Understand the Ansible key connection variables
     \begin{itemize}
-      \item <8-> ansible\_user
-      \item <9-> ansible\_password
-      \item <10-> ansible\_become\_pass
+      \item <9-> ansible\_user
+      \item <10-> ansible\_password
     \end{itemize}
     \item <11-> Know where to find help and file issues found
   \end{itemize}
@@ -47,11 +47,19 @@
   \begin{itemize}
     \item Originally was used to manage Linux hosts
     \item <2-> Agent-less architecture
-    \item <3-> Leverage sports analogies for describing the structure
+    \item <3-> Control Nodes and Managed Nodes
+    \item <4-> Leverage sports analogies for describing the structure
     \begin{itemize}
-      \item <3-> Start with individual tasks at the smallest level
-      \item <4-> Tasks are part of a play
-      \item <5-> Multiple plays form a playbook
+      \item <4-> Start with individual tasks at the smallest level
+      \item <5-> Tasks are part of a play
+      \item <6-> Multiple plays form a playbook
+    \end{itemize}
+    \item <7-> Roles
+    \begin{itemize}
+      \item <8-> Leaf Switch
+      \item <8-> Spine Switch
+      \item <8-> NXOS Switch
+      \item <8-> WAN Router
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -86,11 +94,10 @@
         \item <2-> Roles
       \end{itemize}
       \item <3-> Use the debug module to look into the automation
-      \item <4-> Ansible "magic variables"
+      \item <4-> Ansible key connection variables
       \begin{itemize}
         \item <5-> ansible\_user
         \item <5-> ansible\_password
-        \item <5-> asnible\_become\_pass
       \end{itemize}
       \item <6-> Reviewed Ansible's Galaxy/Github pages
     \end{itemize}

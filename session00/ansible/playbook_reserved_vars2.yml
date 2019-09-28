@@ -1,0 +1,26 @@
+---
+- name: "PLAY 1: Debug reserved variables"
+  connection: network_cli
+  gather_facts: no
+  become: yes
+  become_method: enable
+  hosts: routers
+  tasks:
+
+    - name: "TASK 0: IOS >> Get interfaces brief"
+      ios_command:
+        commands:
+          - show ip int brief
+      register: output
+
+    - name: "TASK 1: SYS >> Debug ansible_user"
+      debug:
+        msg: "{{ ansible_user }}"
+
+    - name: "TASK 2: SYS >> Debug ansible_password"
+      debug:
+        msg: "{{ ansible_password }}"
+
+    - name: "TASK 3: DEBUG output"
+      debug:
+        msg: "{{ output }}"
