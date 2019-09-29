@@ -32,13 +32,3 @@
     - name: "TASK 2: SYS >> Print out result"
       debug:
         msg: "{{ cloudflare_ping }}"
-
-- name: Debug user
-  connection: local
-  gather_facts: no
-  become: no
-  hosts: localhost
-  tasks:
-    - debug:
-        msg: "{{ ansible_user }}"
-
