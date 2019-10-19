@@ -16,3 +16,4 @@
     - name: "TASK 2: Print output of ping"
       debug:
         var: "ping_output"
+...

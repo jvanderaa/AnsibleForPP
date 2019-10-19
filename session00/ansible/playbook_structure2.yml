@@ -32,3 +32,4 @@
     - name: "TASK 2: SYS >> Print out result"
       debug:
         msg: "{{ cloudflare_ping }}"
+...

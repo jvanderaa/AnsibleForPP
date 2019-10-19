@@ -13,3 +13,4 @@
     - name: "TASK 2: SYS >> Debug ansible_password"
       debug:
         msg: "{{ ansible_password }}"
+...
