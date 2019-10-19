@@ -10,7 +10,7 @@
     - name: "TASK 0: IOS >> Get interfaces brief"
       ios_command:
         commands:
-          - show ip int brief
+          - show ntp associations
       register: output
 
     - name: "TASK 1: SYS >> Debug ansible_user"
