@@ -38,4 +38,4 @@
           - "{{ my_first_var }}"
           - "{{ my_prompt1 }}"
           - "{{ my_secret1 }}"
-  
+...

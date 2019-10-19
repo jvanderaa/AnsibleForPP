@@ -24,3 +24,4 @@
     - name: "TASK 3: DEBUG output"
       debug:
         msg: "{{ output }}"
+...
