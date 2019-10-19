@@ -1,3 +1,8 @@
+[all]
+
+[all:children]
+ios
+
 [local]
 localhost
 
@@ -5,9 +10,19 @@ localhost
 
 [ios:children]
 routers
+switches
 
 [ios:vars]
 ansible_network_os=ios
+ansible_user=cisco
 
 [routers]
 r1 ansible_host=10.0.0.1
+r2 ansible_host=10.0.0.2
+r3 ansible_host=10.0.0.3
+
+[switches]
+sw01 ansible_host=10.0.0.5
+
+[switches:vars]
+ansible_user=swt_user
