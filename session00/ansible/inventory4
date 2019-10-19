@@ -3,6 +3,9 @@
 [all:children]
 ios
 
+[local]
+localhost
+
 [ios]
 
 [ios:children]
