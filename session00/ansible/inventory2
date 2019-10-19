@@ -1,3 +1,6 @@
+[local]
+localhost
+
 [ios]
 
 [ios:children]
