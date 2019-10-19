@@ -32,4 +32,21 @@
     - name: "TASK 2: SYS >> Print out result"
       debug:
         msg: "{{ cloudflare_ping }}"
+
+- name: "PLAY 3: Ping Google DNS address when Tag is google"
+  connection: local
+  gather_facts: no
+  become: no
+  hosts: localhost
+  tags: google
+  
+  tasks:
+    - name: "TASK 1: SYS >> Ping to cloudflare DNS 1.1.1.1"
+      shell: "ping 8.8.8.8 -c 3"
+      register: google_ping
+
+    - name: "TASK 2: SYS >> Print out result"
+      debug:
+        msg: "{{ google_ping }}"
+
 ...
