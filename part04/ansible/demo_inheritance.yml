@@ -1,0 +1,12 @@
+---
+# Playbook to demo inheritance of variables
+- name: "PLAY 1: TAKING A LOOK AT INHERITANCE"
+  hosts: all
+  connection: local
+  tasks:
+    - name: "TASK 1: LOOKING AT DNS SERVERS"
+      debug:
+        msg: "ip name-server {{ item }}"
+      loop: "{{ dns_servers }}"
+      delegate_to: localhost
+...

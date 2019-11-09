@@ -1,0 +1,9 @@
+---
+vlan2:
+  - name: Users
+vlan3:
+  - name: Phones
+vlan100:
+  - name: Servers
+...
+
