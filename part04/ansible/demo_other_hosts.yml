@@ -11,7 +11,7 @@
       delegate_to: localhost
       when: "inventory_hostname == 'rtr-4'"
 
-    - name: "TASK 1: LOOKING AT DNS SERVERS"
+    - name: "TASK 2: LOOKING AT DNS SERVERS"
       debug:
         msg: "ip name-server {{ item }}"
       loop: "{{ hostvars['rtr-1']['dns_servers'] }}"
