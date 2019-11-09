@@ -1,0 +1,14 @@
+---
+# Playbook to demo inheritance of variables
+- name: "PLAY 1: WORKING WITH SECRET DATA"
+  hosts: all
+  connection: network_cli
+  tasks:
+    - name: "TASK 1: OPEN UP VAULT FILES"
+      include_vars: "files/secret_info.yml"
+      delegate_to: localhost
+
+    - name: "TASK 2: IMPORT SECOND SET OF TASKS"
+      include_tasks: "files/set_name_servers.yml"
+      no_log: true
+...
