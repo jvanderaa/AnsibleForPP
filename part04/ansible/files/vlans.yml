@@ -1,9 +1,10 @@
 ---
-vlan2:
+vlans:
   - name: Users
-vlan3:
+    vlan_id: 2
   - name: Phones
-vlan100:
+    vlan_id: 3
   - name: Servers
+    vlan_id: 100
 ...
 
