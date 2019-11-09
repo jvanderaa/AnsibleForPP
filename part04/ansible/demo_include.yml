@@ -1,0 +1,13 @@
+---
+# Playbook to demo inheritance of variables
+- name: "PLAY 1: TAKING A LOOK AT INCLUDES"
+  hosts: all
+  connection: local
+  tasks:
+    - name: "TASK 1: GET VARIABLES FROM FILE IN FILES DIRECTORY"
+      include_vars: "files/vlans.yml"
+
+    - name: "TASK 2: DEBUG VARIABLES"
+      debug: 
+        msg: "{{ vlans }}"
+...
