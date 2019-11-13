@@ -1,0 +1,101 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage{fontawesome}
+\usepackage{hyperref}
+\usepackage{url}
+\usetheme{Madrid}
+\usecolortheme{sidebartab}
+\usefonttheme{professionalfonts}
+\urlstyle{same}
+
+\title{Ansible for Network Automation}
+\subtitle{Templating with Ansible}
+\date{}
+\author{Josh VanDeraa}
+
+\begin{document}
+\begin{frame}
+  \maketitle
+  \footnotesize
+  \faTwitter vanderaaj \hfill \faGithub jvanderaa \hfill \faSlack jvanderaa
+\end{frame}
+
+\begin{frame}
+    \frametitle{Session Overview}
+    At the end of this session you will:
+    \begin{itemize}
+      \item <2-> Have worked with templates to build various configuration stanzas
+      \item <3-> Have seen various methods for working with Jinja2 templates in Ansible
+      \begin{itemize}
+          \item <3-> Template from Ansible task to output
+          \item <4-> Template from Ansible task to a file
+          \item <5-> Template from a file to a file
+          \item <6-> Template from a file to an IOS device
+      \end{itemize}
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}[t]
+    \frametitle{Jinja2 - Templating Language}
+      \begin{center}
+        \includegraphics[width=3cm]{assets/jinja-logo.png}
+      \end{center}
+      Ansible leverages Jinja2 templates for templating.
+      \begin{itemize}
+          \item Modelled after Django's (Python Web Framework) templating language
+          \item Can be used in generic Python scripting as well
+          \item Templating language for other Python based frameworks as well
+      \end{itemize}
+      \tiny
+      \vfill
+      image source (2019-11-10): \url{https://jinja.palletsprojects.com/en/2.10.x/}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{DEMO!}
+    \begin{columns}
+    \begin{column}{0.3\textwidth}
+      \Huge
+      \begin{center}
+        \faDesktop 
+        \hspace{.5cm}
+        \faRocket     
+      \end{center}
+    \end{column}
+    \begin{column}{0.7\textwidth}
+      \huge 
+        Let's take a look!
+        \begin{itemize}
+          \item Jinja2 Templates
+        \end{itemize}
+    \end{column}
+    \end{columns}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Summary}
+      To review what we accomplished today:
+      \begin{itemize}
+        \item <2-> Have worked with templates to build various configuration stanzas
+        \item <3-> Have seen various methods for working with Jinja2 templates in Ansible
+        \begin{itemize}
+            \item <3-> Template from Ansible task to output
+            \item <4-> Template from Ansible task to a file
+            \item <5-> Template from a file to a file
+            \item <6-> Template from a file to an IOS device
+        \end{itemize}
+      \end{itemize}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Contact}
+    \huge
+    \begin{center}
+      \url{https://packetpushers.slack.com}
+    \end{center}
+    \begin{center}
+      \normalsize
+      \faSlack \hspace{.1cm}jvanderaa  
+    \end{center}
+  \end{frame}
+
+\end{document}

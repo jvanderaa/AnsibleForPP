@@ -1,0 +1,5 @@
+---
+interfaces:
+  - { name: vlan2, ip_add: 192.168.2.1, subnet_mask: 255.255.255.0 }
+  - { name: vlan3, ip_add: 192.168.3.1, subnet_mask: 255.255.255.0 }
+  - { name: vlan100, ip_add: 192.168.100.1, subnet_mask: 255.255.255.0 }

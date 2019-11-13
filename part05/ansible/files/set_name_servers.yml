@@ -1,0 +1,21 @@
+- name: "TASK 3: Set Name Servers"
+  ios_config:
+    lines:
+      - ip name-server {{ name_server.ip_address }}
+  loop:
+    - { name: Quad9, ip_address: 9.9.9.9 }
+    - { name: Google DNS, ip_address: 8.8.8.8 }
+    - { name: CloudFlare DNS, ip_address: 1.1.1.1 }
+  loop_control:
+    label: "{{ name_server.name }}"
+    pause: 2
+    loop_var: name_server
+
+- name: "TASK 4: Set Name Servers - Simple Version"
+  ios_config:
+    lines:
+      - ip name-server {{ item }}
+  loop:
+    - 1.1.1.1
+    - 8.8.8.8
+    - 9.9.9.9

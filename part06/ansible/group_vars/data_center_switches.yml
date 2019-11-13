@@ -1,0 +1,12 @@
+---
+vlans:
+  - name: Users
+    vlan_id: 2
+  - name: Phones
+    vlan_id: 3
+  - name: Servers
+    vlan_id: 100
+  - name: Voice Servers
+    vlan_id: 201
+...
+

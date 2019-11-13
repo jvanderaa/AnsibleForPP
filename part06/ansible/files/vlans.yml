@@ -1,0 +1,13 @@
+---
+vlans:
+  - name: Users
+    vlan_id: 2
+    location: all
+  - name: Phones
+    vlan_id: 3
+    location: all
+  - name: Servers
+    vlan_id: 100
+    location: datacenters
+...
+

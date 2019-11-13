@@ -1,0 +1,16 @@
+[all]
+
+[all:vars]
+ansible_network_os=ios
+
+[datacenter_routers]
+border-rtr01 ansible_host=10.0.0.100
+rtr-1 ansible_host=10.0.0.11
+rtr-2 ansible_host=10.0.0.2
+rtr-3 ansible_host=10.0.0.3
+
+[remote_routers]
+rtr-4 ansible_host=10.0.0.4
+
+[remote_switches]
+site01sw01 ansible_host=192.168.1.2]
