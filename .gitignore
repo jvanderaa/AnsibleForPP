@@ -1,3 +1,6 @@
+# My Directories
+./part06/ansible/configs/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

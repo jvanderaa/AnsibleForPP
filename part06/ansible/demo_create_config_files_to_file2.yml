@@ -1,0 +1,11 @@
+---
+- name: "PLAY 1: DEMO GENERATE VLAN CONFIGURATION"
+  connection: local
+  hosts: all
+  tasks:
+    - name: "TASK 1: GENERATE CONFIGURATION TO A TEXT FILE"
+      template:
+        src: ios_l3_interfaces.j2
+        dest: ./configs/{{ inventory_hostname }}-l3_interfaces.cfg
+      delegate_to: localhost
+...

@@ -1,0 +1,11 @@
+---
+- name: "PLAY 1: DEMO GENERATE VLAN CONFIGURATION"
+  connection: local
+  hosts: remote_switches
+  tasks:
+    - name: "TASK 1: GENERATE LAYER 2 CONFIGURATION TO A TEXT FILE"
+      template:
+        src: ios_l2_interfaces.j2
+        dest: ./configs/{{ inventory_hostname }}-l2.cfg
+      delegate_to: localhost
+...
