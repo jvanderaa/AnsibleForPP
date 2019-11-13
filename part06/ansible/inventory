@@ -13,4 +13,4 @@ rtr-3 ansible_host=10.0.0.3
 rtr-4 ansible_host=10.0.0.4
 
 [remote_switches]
-site01sw01 ansible_host=192.168.1.2]
+site01sw01 ansible_host=192.168.1.2
