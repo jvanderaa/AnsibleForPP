@@ -1,0 +1,26 @@
+---
+- name: "PLAY 1: UPDATE IOS DNS SERVER CONFIGURATION"
+  hosts: all
+  connection: network_cli
+  tasks:
+    - name: "TASK 0: Get credentials for the devices"
+      include_vars: "files/secret_info.yml"
+      delegate_to: localhost
+
+    - name: "TASK 1: Deploy IOS DNS Configuration with IOS Config"
+      ios_config:
+        src: "templates/ios_dns.j2"
+        save_when: changed
+      register: ios_config_output
+      ignore_errors: true
+
+    - debug:
+        msg: "{{ ios_config_output }}"
+
+    - name: "TASK 2: Deploy IOS DNS configuration with CLI Config"
+      cli_config:
+        config: "{{ lookup('template', 'templates/ios_dns.j2') }}"
+
+    - name: "TASK 3: Write configuration for CLI"
+      cli_command:
+        command: "wr mem"
