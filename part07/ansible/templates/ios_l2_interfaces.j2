@@ -1,0 +1,5 @@
+{% for intf_dict in interfaces %}
+{% for intf_name, intf_ip in intf_dict.items() %}
+{{ intf_name }}
+{% endfor %}
+{% endfor %}

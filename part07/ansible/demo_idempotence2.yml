@@ -1,0 +1,22 @@
+---
+- name: "PLAY 1: Demonstration of Idempotence"
+  hosts: rtr-1
+  connection: network_cli
+  tasks:
+    - name: "TASK 0: Gather credentials"
+      include_vars: "files/secret_info.yml"
+      delegate_to: localhost
+
+    - name: "TASK 1: Working with an interface"
+      ios_config:
+        parents: interface Loopback7
+        lines:
+          - ip address 10.20.30.7 255.255.255.255
+        save_when: changed
+
+    - name: "TASK 2: REPEAT: Working with an interface"
+      ios_config:
+        parents: interface Loopback7
+        lines:
+          - ip address 10.20.30.7 255.255.255.255
+        save_when: changed
