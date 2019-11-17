@@ -1,0 +1,18 @@
+---
+- name: "PLAY 1: Demonstration of Idempotence"
+  hosts: rtr-1
+  connection: network_cli
+  tasks:
+    - name: "TASK 0: Gather credentials"
+      include_vars: "files/secret_info.yml"
+      delegate_to: localhost
+
+    - name: "TASK 1: Working with an interface"
+      ios_config:
+        src: ios_idempotent_interface.j2
+        save_when: changed
+
+    - name: "TASK 2: REPEAT: Working with an interface"
+      ios_config:
+        src: ios_idempotent_interface.j2
+        save_when: changed

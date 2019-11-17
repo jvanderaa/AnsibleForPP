@@ -1,0 +1,7 @@
+---
+dns_servers:
+  - 4.4.2.2
+interfaces:
+  - { name: loopback12, ip_add: 10.12.0.2, subnet_mask: 255.255.255.255 }
+  - { name: loopback13, ip_add: 10.13.0.2, subnet_mask: 255.255.255.255 }
+...
