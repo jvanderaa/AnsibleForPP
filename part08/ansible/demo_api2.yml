@@ -1,0 +1,23 @@
+---
+- name: "PLAY 1: Working with APIs"
+  connection: local
+  hosts: localhost
+  vars_files:
+    - files/secret_info.yml
+  vars:
+    netbox_headers:
+      Content-Type: "application/json"
+      Authorization: "token {{ netbox_token }}"
+  tasks:
+    - name: "TASK 1: Get Netbox Devices"
+      uri:
+        url: "http://netbox.lcl/api/dcim/devices/"
+        method: GET
+        status_code: 200
+        headers: "{{ netbox_headers }}"
+      register: netbox_device_results
+
+    - name: "Debug"
+      debug:
+        msg: "{{ item }}"
+      loop: "{{ netbox_device_results.json.results }}"
