@@ -1,0 +1,32 @@
+---
+- name: "PLAY 1: Working with APIs"
+  connection: local
+  hosts: localhost
+  vars_files:
+    - files/secret_info.yml
+  vars:
+    netbox_headers:
+      Content-Type: "application/json"
+      Authorization: "token {{ netbox_token }}"
+  tasks:
+    # Get the Netbox Device Information
+    - name: "TASK 1: Get Netbox Devices"
+      uri:
+        url: "http://netbox.lcl/api/dcim/devices/"
+        method: GET
+        status_code: 200
+        headers: "{{ netbox_headers }}"
+      register: netbox_device_results
+
+    # Find the Interface that has a Loopback7 Interface
+    - name: "TASK 2: Get the Interface Information for Loopback 7 on RTR-1"
+      uri:
+        url: "http://netbox.lcl/api/dcim/interfaces/?name=Loopback7&device=rtr-1"
+        method: GET
+        status_code: 200
+        headers: "{{ netbox_headers }}"
+      register: netbox_loopback_interface
+
+    - name: "Print out the netbox_loopback_interface"
+      debug:
+        msg: "{{ netbox_loopback_interface }}"
