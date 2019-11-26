@@ -1,0 +1,35 @@
+---
+- name: "PLAY 1: Looking at Facts"
+  hosts: wan_routers
+  connection: network_cli
+  vars:
+    play_wide: "Packet Pushers"
+
+  tasks:
+    - 
+    - name: "TASK 1: Gather information"
+      ios_command:
+        commands:
+          - show ntp association
+      register: output
+      vars:
+        ansible_user: cisco
+        ignition_var: ignition
+
+    - pause:
+        minutes: 2
+
+    - debug:
+        msg: "{{ output }}"
+
+    - pause:
+        minutes: 2
+
+    - debug:
+        msg: "{{ play_wide }}"
+
+    - pause:
+        minutes: 2
+
+    - debug:
+        msg: "{{ ignition_var }}"

@@ -1,0 +1,90 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage{fontawesome}
+\usepackage{hyperref}
+\usetheme{Madrid}
+\usecolortheme{sidebartab}
+\usefonttheme{professionalfonts}
+\urlstyle{same}
+
+\title{Ansible for Network Automation}
+\subtitle{Advanced Fundamentals}
+\date{}
+\author{Josh VanDeraa}
+
+\begin{document}
+% \frame{\titlepage}
+\begin{frame}
+  \maketitle
+  \footnotesize
+  \faTwitter vanderaaj \hfill \faGithub jvanderaa \hfill \faSlack jvanderaa
+\end{frame}
+
+\begin{frame}
+  \frametitle{Session Overview}
+  At the end of this session you will see how to:
+  \begin{itemize}
+    \item <2-> Use variables
+    \begin{itemize}
+      \item <2-> Setting facts in tasks
+      \item <3-> Play/task defined variables
+      \item <4-> Prompts
+      \item <5-> Accessing variables from other devices
+    \end{itemize}
+    \item <6-> Work with Loops
+    \item <7-> Use Ansible Vault
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Demo!}
+  \begin{columns}
+    \begin{column}{0.3\textwidth}
+      \Huge
+      \begin{center}
+        \faDesktop 
+        \hspace{.5cm}
+        \faRocket     
+      \end{center}
+    \end{column}
+    \begin{column}{0.7\textwidth}
+      \huge 
+      Let's take a look!
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% THIS IS THE ENDING SLIDE... NEEDS TO GET UPDATED!!!!!
+\begin{frame}
+  \frametitle{Summary}
+    To review what we accomplished today:
+    \begin{itemize}
+      \item <1-> Playbook structure
+      \begin{itemize}
+        \item <2-> Tasks
+        \item <2-> Plays
+        \item <2-> Playbooks
+        \item <2-> Roles
+      \end{itemize}
+      \item <3-> Use the debug module to look into the automation
+      \item <4-> Ansible key connection variables
+      \begin{itemize}
+        \item <5-> ansible\_user
+        \item <5-> ansible\_password
+      \end{itemize}
+      \item <6-> Reviewed Ansible's Galaxy/Github pages
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Contact}
+  \huge
+  You can find me and more contacts on the Packet Pushers Slack Channel. 
+  \linebreak
+  \begin{center}
+    \normalsize
+    \faSlack \hspace{.1cm}jvanderaa  
+  \end{center}
+  
+\end{frame}
+
+\end{document}
