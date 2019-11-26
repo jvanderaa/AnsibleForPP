@@ -3,5 +3,5 @@
 qos_default_web:
   - permit ip any any
 qos_priority_web:
-  - permit tcp any host 203.0.113.20 eq 80
-  - permit tcp host 203.0.113.20 eq 80 any
+  - permit tcp any host 203.0.113.20 eq www
+  - permit tcp host 203.0.113.20 eq www any

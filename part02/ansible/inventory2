@@ -1,0 +1,40 @@
+[routers]
+border-rtr01 ansible_host=10.0.0.100
+rtr-1 ansible_host=10.0.0.11
+rtr-2 ansible_host=10.0.0.2
+inet-rtr01 ansible_host=10.0.0.1
+
+[routers:children]
+wan_routers
+
+[routers:vars]
+ansible_network_os=ios
+ansible_user=cisco
+ansible_password=cisco
+ansible_become_pass=cisco
+
+[wan_routers]
+rtr-4 ansible_host=10.0.0.4
+rtr-3 ansible_host=10.0.0.3
+
+[switches]
+
+[switches:children]
+nxos_switches
+branch_switches
+
+[nxos_switches]
+nxos-1 ansible_host=10.0.0.200
+
+[nxos_switches:vars]
+ansible_network_os=nxos
+ansible_user=admin
+ansible_password=admin
+
+[branch_switches]
+alphaswt01 ansible_host=192.168.1.2
+
+[branch_switches:vars]
+ansible_network_os=ios
+ansible_user=cisco
+ansible_password=cisco
