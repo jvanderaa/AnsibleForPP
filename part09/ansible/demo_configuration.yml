@@ -1,0 +1,5 @@
+---
+- name: "PLAY 1: Configuration"
+  connection: network_cli
+  roles:
+    - datacenter_router_qos

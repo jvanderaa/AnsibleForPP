@@ -1,0 +1,8 @@
+{% for priority_web in qos_priority_web %}
+{% if loop.index == 1 %}
+ip access-list extended PRIORITY_WEB
+{% endif %}
+ permit {{ priority_web.protocol }} {{ priority_web.src }} {{ priority_web.dst }}
+ permit {{ priority_web.protocol }} {{ priority_web.dst }} {{ priority_web.src }}
+{% endfor %}
+ remark END OF ACL

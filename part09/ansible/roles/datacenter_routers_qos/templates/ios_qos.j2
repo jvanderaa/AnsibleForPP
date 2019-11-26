@@ -1,0 +1,21 @@
+{% for default_web in qos_default_web -%}
+{% if loop.index == 1 %}
+ip access-list extended DEFAULT_WEB
+{% endif %}
+ permit {{ default_web.protocol }} {{ default_web.src }} {{ default_web.dst }}
+ permit {{ default_web.protocol }} {{ default_web.dst }} {{ default_web.src }}
+{% endfor -%}
+{% for priority_web in qos_priority_web %}
+class-map match-all class2
+ match access-group name DEFAULT_WEB
+class-map match-all class1
+ match access-group name PRIORITY_WEB
+!
+policy-map policy1
+ class class1
+ class class2
+
+interface GigabitEthernet0/3
+ service-policy input policy1
+ service-policy output policy1
+

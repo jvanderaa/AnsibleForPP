@@ -1,0 +1,7 @@
+---
+# vars file for datacenter_routers_qos
+qos_default_web:
+  - permit ip any any
+qos_priority_web:
+  - permit tcp any host 203.0.113.20 eq 80
+  - permit tcp host 203.0.113.20 eq 80 any
