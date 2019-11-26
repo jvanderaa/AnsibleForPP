@@ -1,0 +1,8 @@
+class-map match-all class2
+ match access-group name DEFAULT_WEB
+class-map match-all class1
+ match access-group name PRIORITY_WEB
+!
+policy-map policy1
+ class class1
+ class class2

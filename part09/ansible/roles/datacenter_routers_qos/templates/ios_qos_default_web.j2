@@ -1,0 +1,5 @@
+ip access-list extended DEFAULT_WEB
+ {% for default_web in qos_default_web -%}
+ permit {{ default_web.protocol }} {{ default_web.src }} {{ default_web.dst }}
+ permit {{ default_web.protocol }} {{ default_web.dst }} {{ default_web.src }}
+ {% endfor -%}

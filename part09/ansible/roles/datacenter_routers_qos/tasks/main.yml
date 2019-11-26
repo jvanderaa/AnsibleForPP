@@ -1,0 +1,29 @@
+---
+# tasks file for datacenter_routers_qos
+- name: "TASK 1: Configure QOS ACL Default Web"
+  ios_config:
+    lines: "{{ qos_default_web }}"
+    parents: ip access-list extended DEFAULT_WEB
+    before: no ip access-list extended DEFAULT_WEB
+    match: exact
+
+- name: "TASK 2: Configure QOS ACL Priority Web"
+  ios_config:
+    lines: "{{ qos_priority_web }}"
+    parents: ip access-list extended PRIORITY_WEB
+    before: no ip access-list extended PRIORITY_WEB
+    match: exact
+  register: priority_web_change
+
+- name: "TASK 3: Configure QOS Class Map"
+  cli_config:
+    config: "{{ lookup('template', 'ios_qos_class_map.j2') }}"
+
+- name: "TASK 4: Configure QOS on Interfaces"
+  cli_config:
+    config: "{{ lookup('template', 'ios_qos_interfaces.j2') }}"
+
+- name: "TASK 5: DEBUG priority_web_change"
+  debug:
+    msg: "{{ priority_web_change }}"
+...
