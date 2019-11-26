@@ -15,6 +15,10 @@
       debug:
         msg: "{{ pre_check }}"
       when: "inventory_hostname == 'rtr-3'"
+
+    - name: pause
+      pause:
+        seconds: 10
     
     - name: "TASK 3: Include Roles"
       include_role:
