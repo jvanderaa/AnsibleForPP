@@ -18,10 +18,6 @@
             state: query
           register: "meraki_org_info"
 
-        - name: debug
-          debug:
-            msg: "{{ meraki_org_info }}"
-
         - name: "TASK 2: Get Wireless SSIDs"
           meraki_ssid:
             auth_key: "{{ meraki_key }}"
