@@ -31,17 +31,4 @@
         - name: Debug Meraki Devices
           debug:
             msg: "{{ meraki_devices }}"
-
-        - name: "TASK 3: Get Wireless SSIDs"
-          meraki_ssid:
-            auth_key: "{{ meraki_key }}"
-            org_id: "{{ meraki_org_info.data.0.id }}"
-            state: query
-          register: meraki_ssid_pre
-
-        - name: debug ssid_pre
-          debug:
-            msg: "{{ meraki_ssid_pre }}"
-
-        # - name: "TASK 3: Create New Wireless SSID"
       delegate_to: localhost
