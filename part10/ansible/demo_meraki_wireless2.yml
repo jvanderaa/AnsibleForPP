@@ -1,0 +1,87 @@
+---
+- name: "PLAY 1: DEMO MERAKI ENVIRONMENT"
+  hosts: meraki_remote
+  connection: local
+  vars_files:
+    - "files/secret_info.yml"
+  vars:
+    meraki_headers:
+      Content-Type: "application/json"
+      X-Cisco-Meraki-API-Key: "{{ meraki_key }}"
+    net_name: "JoshV"
+  tasks:
+    - name: "BLOCK 1: ENTIRE PLAY BLOCK"
+      block: 
+        - name: "TASK 1: Get Meraki Organization ID"
+          meraki_organization:
+            auth_key: "{{ meraki_key }}"
+            state: query
+          register: "meraki_org_info"
+
+        - name: debug
+          debug:
+            msg: "{{ meraki_org_info }}"
+
+        - name: "TASK 2: Get Wireless SSIDs"
+          meraki_ssid:
+            auth_key: "{{ meraki_key }}"
+            net_name: "{{ net_name }}"
+            org_id: "{{ meraki_org_info.data.0.id }}"
+            state: query
+          register: meraki_ssid_pre
+
+        - name: "TASK 3: Pre Add SSIDs"
+          debug:
+            msg: "{{ item }}"
+          loop: "{{ meraki_ssid_pre.data }}"
+          when: "'Unconfigured' not in item.name"
+
+        - name: "TASK 4: Create New Wireless SSID"
+          meraki_ssid:
+            auth_key: "{{ meraki_key }}"
+            net_name: "{{ net_name }}"
+            org_name: "{{ meraki_org_info.data.0.name }}"
+            state: present
+            name: "{{ item.name }}"
+            enabled: true
+          loop: "{{ wireless }}"
+
+        - name: "TASK 5: Post Add Get Wireless SSIDs"
+          meraki_ssid:
+            auth_key: "{{ meraki_key }}"
+            net_name: "{{ net_name }}"
+            org_id: "{{ meraki_org_info.data.0.id }}"
+            state: query
+          register: meraki_ssid_post_add
+
+        - name: "TASK 6: Add IDs "
+          debug:
+            msg: "{{ item }}"
+          loop: "{{ meraki_ssid_post_add.data }}"
+          when: "'Unconfigured' not in item.name"
+
+        - name: "TASK 7: Remove the new networks"
+          meraki_ssid:
+            auth_key: "{{ meraki_key }}"
+            net_name: "{{ net_name }}"
+            org_name: "{{ meraki_org_info.data.0.name }}"
+            state: absent
+            name: "{{ item.name }}"
+            enabled: true
+          loop: "{{ wireless }}"
+
+        - name: "TASK 8: Get Wireless SSIDs"
+          meraki_ssid:
+            auth_key: "{{ meraki_key }}"
+            net_name: "{{ net_name }}"
+            org_id: "{{ meraki_org_info.data.0.id }}"
+            state: query
+          register: meraki_ssid_post_remove
+
+        - name: "TASK 9: Post Delete SSIDs"
+          debug:
+            msg: "{{ item }}"
+          loop: "{{ meraki_ssid_post_remove.data }}"
+          when: "'Unconfigured' not in item.name"
+      delegate_to: localhost
+...

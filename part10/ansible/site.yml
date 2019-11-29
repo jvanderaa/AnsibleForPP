@@ -1,0 +1,40 @@
+---
+# Playbook execution for the whole stack
+- name: "PLAY 1: DataCenter Router Base Configuration"
+  hosts: datacenter_routers
+  vars_files:
+    - files/secret_info.yml
+
+  tasks:
+    - name: "TASK 1: Check the current bandwidth"
+      cli_command:
+        command: "show policy-map interface GigabitEthernet0/3"
+      register: pre_check
+
+    - name: "TASK 2: Show the output from the previous command"
+      debug:
+        msg: "{{ pre_check }}"
+      when: "inventory_hostname == 'rtr-3'"
+
+    - name: pause
+      pause:
+        seconds: 10
+    
+    - name: "TASK 3: Include Roles"
+      include_role:
+        name: datacenter_routers_qos
+    
+    - name: "TASK 4: Pause for 30 seconds"
+      pause:
+        seconds: 30
+
+    - name: "TASK 5: Show output again"
+      cli_command:
+        command: "show policy-map interface GigabitEthernet0/3"
+      register: post_check
+
+    - name: "TASK 6: Debug post check"
+      debug:
+        msg: "{{ post_check }}"
+      when: "inventory_hostname == 'rtr-3'"
+...

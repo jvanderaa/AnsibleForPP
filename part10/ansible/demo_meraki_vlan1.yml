@@ -1,0 +1,60 @@
+---
+- name: "PLAY 1: DEMO MERAKI ENVIRONMENT"
+  hosts: meraki_remote
+  connection: local
+  vars_files:
+    - "files/secret_info.yml"
+  vars:
+    meraki_headers:
+      Content-Type: "application/json"
+      X-Cisco-Meraki-API-Key: "{{ meraki_key }}"
+    net_name: "JoshV"
+  tasks:
+    - name: "BLOCK 1: ENTIRE PLAY BLOCK"
+      block: 
+        - name: "TASK 1: Get Meraki Organization ID"
+          meraki_organization:
+            auth_key: "{{ meraki_key }}"
+            state: query
+          register: "meraki_org_info"
+
+        - name: "TASK 2: Get VLANs"
+          meraki_vlan:
+            auth_key: "{{ meraki_key }}"
+            net_name: "{{ net_name }}"
+            org_id: "{{ meraki_org_info.data.0.id }}"
+            state: query
+          register: meraki_vlan_pre
+
+        - name: "TASK 4: Debug meraki_vlan_pre"
+          debug:
+            msg: "{{ meraki_vlan_pre.data | length }}"
+          
+
+        - name: "TASK 5: Create Remote site VLANs"
+          meraki_vlan:
+            auth_key: "{{ meraki_key }}"
+            net_name: "{{ net_name }}"
+            org_id: "{{ meraki_org_info.data.0.id }}"
+            state: present
+            vlan_id: "{{ item.vlan_id }}"
+            name: "{{ item.name }}"
+            subnet: "{{ item.subnet }}"
+            appliance_ip: "{{ item.gateway }}"
+          register: meraki_create_vlan
+          loop: "{{ vlans }}"
+
+        - name: "TASK 2: Get VLANs"
+          meraki_vlan:
+            auth_key: "{{ meraki_key }}"
+            net_name: "{{ net_name }}"
+            org_id: "{{ meraki_org_info.data.0.id }}"
+            state: query
+          register: meraki_vlan_post
+
+        - name: "TASK 4: Debug meraki_vlan_pre"
+          debug:
+            msg: "{{ meraki_vlan_post.data | length }}"
+
+
+      delegate_to: localhost

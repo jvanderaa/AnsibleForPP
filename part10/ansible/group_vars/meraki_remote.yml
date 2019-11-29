@@ -1,0 +1,25 @@
+---
+vlans:
+  - name: Users
+    vlan_id: 2
+    subnet: 192.168.2.0/24
+    gateway: 192.168.2.1
+  - name: Phones
+    vlan_id: 3
+    subnet: 192.168.3.0/24
+    gateway: 192.168.3.1
+  - name: Servers
+    vlan_id: 100
+    subnet: 192.168.100.0/24
+    gateway: 192.168.100.1
+wireless:
+  - name: ssid1
+    ip_assignment_mode: bridge
+    vlan_id: 2
+    min_bit_rate: 18
+  - name: ssid2
+    ip_assignment_mode: bridge
+    vlan_id: 2
+    min_bit_rate: 18
+...
+

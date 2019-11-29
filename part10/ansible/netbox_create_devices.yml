@@ -1,0 +1,29 @@
+---
+- name: "PLAY 1: Add devices to netbox"
+  connection: network_cli
+  hosts: all
+  tasks:
+    - name: "TASK 0: Gather credentials"
+      include_vars: "files/secret_info.yml"
+      delegate_to: localhost
+
+    - name: "TASK 1: IOS Facts -> Gather info"
+      ios_facts:
+        gather_subset: 
+          - "!config"
+
+    - name: "TASK 2: NETBOX >> Add devices to Netbox"
+      netbox_device:
+        netbox_url: "http://netbox.lcl"
+        netbox_token: "{{ netbox_token }}"
+        data:
+          name: "{{ inventory_hostname }}"
+          device_type: "router"
+          device_role: "router"
+          site: "dc01"
+          serial: "{{ ansible_facts.net_serialnum }}"
+
+    - name: debug
+      debug:
+        msg: "{{ ansible_facts }}"
+...

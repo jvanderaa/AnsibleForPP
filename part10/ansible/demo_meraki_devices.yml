@@ -1,0 +1,47 @@
+---
+- name: "PLAY 1: DEMO MERAKI ENVIRONMENT"
+  hosts: meraki_remote
+  connection: local
+  vars_files:
+    - "files/secret_info.yml"
+  vars:
+    meraki_headers:
+      Content-Type: "application/json"
+      X-Cisco-Meraki-API-Key: "{{ meraki_key }}"
+  tasks:
+    - name: "BLOCK 1: ENTIRE PLAY BLOCK"
+      block: 
+        - name: "TASK 1: Get Meraki Organization ID"
+          meraki_organization:
+            auth_key: "{{ meraki_key }}"
+            state: query
+          register: "meraki_org_info"
+
+        - name: debug
+          debug:
+            msg: "{{ meraki_org_info }}"
+
+        - name: "TASK 2: Get list of devices in the network"
+          meraki_device:
+            auth_key: "{{ meraki_key }}"
+            org_name: "{{ meraki_org_info.data.0.name }}"
+            state: query
+          register: meraki_devices
+
+        - name: Debug Meraki Devices
+          debug:
+            msg: "{{ meraki_devices }}"
+
+        - name: "TASK 3: Get Wireless SSIDs"
+          meraki_ssid:
+            auth_key: "{{ meraki_key }}"
+            org_id: "{{ meraki_org_info.data.0.id }}"
+            state: query
+          register: meraki_ssid_pre
+
+        - name: debug ssid_pre
+          debug:
+            msg: "{{ meraki_ssid_pre }}"
+
+        # - name: "TASK 3: Create New Wireless SSID"
+      delegate_to: localhost
